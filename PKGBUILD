@@ -35,15 +35,15 @@ md5sums=(
 )
 
 build() {
-  cd "${srcdir}/linux-${_basekernel}"
+  cd $srcdir/linux-$pkgver
 
   # fix #19234 i1915 display size
-  patch -Np1 -i "${srcdir}/fix-i915.patch"
+  patch -Np1 -i $srcdir/fix-i915.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i $srcdir/change-default-console-loglevel.patch
 
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
