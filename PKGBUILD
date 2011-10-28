@@ -5,8 +5,8 @@ pkgbase=linux
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.0
-_paxver=test14
-pkgver=${_basekernel}.4
+_paxver=test41
+pkgver=${_basekernel}.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,23 +15,23 @@ makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
+	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
+	change-default-console-loglevel.patch
+	fix-i915.patch
 	config
 	config.x86_64
 	$pkgname.install
 	$pkgname.preset
-	fix-i915.patch
-	change-default-console-loglevel.patch
-	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
 )
 md5sums=(
-	dff86c657cabe813bda84c72bfb93ae8
+	eac4d398a0ecd98214487cd47a228998
+	9888dc04b8fc40357b20a77174972b1a
+	9d3c56a4b999c8bfbd4018089a62f662
+	263725f20c0b9eb9c353040792d644e5
 	fc6aae0fb4d70feff92ec762d29dee45
-	fd5a1712ddea696eee5255de2d854218
+	d9c5dd546928f882562b91ff7e9a5452
 	89bbe93b0eb2d554535edeb50c5d5ba1
 	5d29c2995ffa1ac918dd6b269ec09ecc
-	263725f20c0b9eb9c353040792d644e5
-	9d3c56a4b999c8bfbd4018089a62f662
-	a07f304138c1d75374ab7fcd4af90a92
 )
 
 build() {
@@ -69,7 +69,7 @@ build() {
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  make menuconfig # CLI menu for configuration
+# make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
@@ -78,8 +78,8 @@ build() {
   ####################
   # stop here
   # this is useful to configure the kernel
-  msg "Stopping build"
-  return 1
+# msg "Stopping build"
+# return 1
   ####################
 
   yes "" | make config
