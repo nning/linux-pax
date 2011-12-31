@@ -94,9 +94,9 @@ package_linux-pax() {
   groups=('base')
   depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('kernel26')
-  conflicts=('kernel26')
-  replaces=('kernel26')
+  provides=('kernel26-pax')
+  conflicts=('kernel26-pax')
+  replaces=('kernel26-pax')
   backup=("etc/mkinitcpio.d/${pkgname}.preset")
   install=$pkgname.install
 
@@ -138,9 +138,9 @@ package_linux-pax() {
 
 package_linux-pax-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel with PaX patches"
-  provides=('kernel26-headers')
-  conflicts=('kernel26-headers')
-  replaces=('kernel26-headers')
+  provides=('kernel26-pax-headers')
+  conflicts=('kernel26-pax-headers')
+  replaces=('kernel26-pax-headers')
 
   mkdir -p "${pkgdir}/lib/modules/${_kernver}"
 
