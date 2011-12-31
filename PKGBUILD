@@ -11,6 +11,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
+depends=('paxctl')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
 source=(
