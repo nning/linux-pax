@@ -99,7 +99,7 @@ package_linux-pax() {
   backup=("etc/mkinitcpio.d/${pkgname}.preset")
   install=$pkgname.install
 
-  cd "${srcdir}/linux-${_basekernel}"
+  cd $srcdir/linux-$pkgver
 
   KARCH=x86
 
