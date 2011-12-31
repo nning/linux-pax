@@ -31,7 +31,7 @@ md5sums=(
 	263725f20c0b9eb9c353040792d644e5
 	aebfbb4659acc8ab685778ac3c1e45b5
 	d9c5dd546928f882562b91ff7e9a5452
-	a4822cb568a852f590303c67761f0b40
+	d52916e114f2830a6642a152aed4098f
 	5d29c2995ffa1ac918dd6b269ec09ecc
 )
 
@@ -147,7 +147,7 @@ package_linux-pax-headers() {
   cd "${pkgdir}/lib/modules/${_kernver}"
   ln -sf ../../../usr/src/linux-${_kernver} build
 
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/linux-${pkgver}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/src/linux-${_kernver}/Makefile"
   install -D -m644 kernel/Makefile \

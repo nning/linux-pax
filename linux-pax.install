@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=pax
-KERNEL_VERSION=3.0-pax
+KERNEL_NAME=-pax
+KERNEL_VERSION=3.1-pax
 
 _fix_permissions () {
 	declare -A perms
