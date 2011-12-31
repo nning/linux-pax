@@ -9,9 +9,9 @@ _fix_permissions () {
 
 	perms=(
 		['PSmXEr']='
-			/usr/lib/firefox-6.0/firefox-bin
-			/usr/lib/firefox-6.0/plugin-container
-			/usr/lib/thunderbird-6.0/thunderbird-bin
+			/usr/lib/firefox/firefox-bin
+			/usr/lib/firefox/plugin-container
+			/usr/lib/thunderbird/thunderbird-bin
 			/usr/lib/chromium/chromium
 		'
 		['PSmXER']='
