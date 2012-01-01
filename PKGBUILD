@@ -1,7 +1,7 @@
 # Contributors:
 #	henning mueller <henning@orgizm.net>
 
-pkgbase=linux
+pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.1
