@@ -1,3 +1,6 @@
+# Original kernel maintainers:
+#	Tobias Powalowski <tpowa@archlinux.org>
+#	Thomas Baechler <thomas@archlinux.org>
 # Contributors:
 #	henning mueller <henning@orgizm.net>
 
@@ -8,17 +11,19 @@ _basekernel=3.1
 _paxver=test20
 pkgver=${_basekernel}.5
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.kernel.org/"
-license=('GPL2')
-depends=('paxctl')
-makedepends=('xmlto' 'docbook-xsl')
-options=('!strip')
+license=(GPL2)
+depends=(paxctl)
+#makedepends=(xmlto docbook-xsl)
+options=(!strip)
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
 	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
 	change-default-console-loglevel.patch
-	fix-i915.patch
+	i915-fix-ghost-tv-output.patch
+	i915-fix-incorrect-error-message.patch
+	usb-add-reset-resume-quirk-for-several-webcams.patch
 	config
 	config.x86_64
 	$pkgname.install
@@ -28,9 +33,11 @@ md5sums=(
 	20cc2ecedbd996c223db61f249afbe3e
 	8d69fe6d6d5d268754651f63e12d0963
 	9d3c56a4b999c8bfbd4018089a62f662
-	263725f20c0b9eb9c353040792d644e5
-	aebfbb4659acc8ab685778ac3c1e45b5
-	d9c5dd546928f882562b91ff7e9a5452
+	342071f852564e1ad03b79271a90b1a5
+	4d1d920c7e9c084be05fe060c4d38bc1
+	d00814b57448895e65fbbc800e8a58ba
+	cbaaa923f00c1935055273ccc1630144
+	93687a4b7e1e6bcd4e7417d6e5079bc4
 	d52916e114f2830a6642a152aed4098f
 	5d29c2995ffa1ac918dd6b269ec09ecc
 )
@@ -38,13 +45,28 @@ md5sums=(
 build() {
   cd $srcdir/linux-$pkgver
 
-  # fix #19234 i1915 display size
-  patch -Np1 -i $srcdir/fix-i915.patch
+  # Some chips detect a ghost TV output
+  # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
+  # Arch Linux bug report: FS#19234
+  #
+  # It is unclear why this patch wasn't merged upstream, it was accepted,
+  # then dropped because the reasoning was unclear. However, it is clearly
+  # needed.
+  patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
+
+  # In 3.1.1, a DRM_DEBUG message is falsely declared as DRM_ERROR. This
+  # worries users, as this message is displayed even at loglevel 4. Fix
+  # this.
+  patch -Np1 -i "${srcdir}/i915-fix-incorrect-error-message.patch"
+
+  # Add the USB_QUIRK_RESET_RESUME for several webcams
+  # FS#26528
+  patch -Np1 -i "${srcdir}/usb-add-reset-resume-quirk-for-several-webcams.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i $srcdir/change-default-console-loglevel.patch
+  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
@@ -134,6 +156,11 @@ package_linux-pax() {
   rm -rf "${pkgdir}/lib/firmware"
   # gzip -9 all modules to safe 100MB of space
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+  # make room for external modules
+  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  # add real version for building modules and running depmod from post_install/upgrade
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 }
 
 package_linux-pax-headers() {
