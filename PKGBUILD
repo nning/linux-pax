@@ -10,12 +10,11 @@ _kernelname=${pkgname#linux}
 _basekernel=3.1
 _paxver=test20
 pkgver=${_basekernel}.5
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 depends=(paxctl)
-#makedepends=(xmlto docbook-xsl)
 options=(!strip)
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
