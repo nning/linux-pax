@@ -8,15 +8,20 @@ _fix_permissions () {
 	declare -A perms
 
 	perms=(
+		# MPROTECT and RANDMMAP off
 		['PSmXEr']='
+			/usr/lib/chromium/chromium
 			/usr/lib/firefox/firefox-bin
 			/usr/lib/firefox/plugin-container
 			/usr/lib/thunderbird/thunderbird-bin
-			/usr/lib/chromium/chromium
 		'
+		# MPROTECT off
 		['PSmXER']='
+			/usr/bin/glxgears
+			/usr/bin/glxinfo
 			/usr/bin/mplayer
 		'
+		# All off
 		['psmxer']='
 			/usr/bin/java
 		'
