@@ -25,6 +25,7 @@ source=(
 	config.x86_64
 	$pkgname.install
 	$pkgname.preset
+	$pkgname-fix-permissions
 )
 md5sums=(
 	7ceb61f87c097fc17509844b71268935
@@ -33,8 +34,10 @@ md5sums=(
 	342071f852564e1ad03b79271a90b1a5
 	e9b3a1485b6bd10c9793732066fd9164
 	f26cdeeb12f10b251d20a777203b0afc
-	093e3b77de2c386f73a2f1b445b55baa
+	c792439f6f6c0dcedd1c71af63673d30
 	5d29c2995ffa1ac918dd6b269ec09ecc
+	6940bba910557e02b828c9d13b06fdb8
+	ceecd44b73841919b0918c72dc242c3b
 )
 
 build() {
@@ -147,6 +150,9 @@ package_linux-pax() {
   # add real version for building modules and running depmod from post_install/upgrade
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
   echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+
+  install -D -m755 $srcdir/$pkgname-fix-permissions \
+	  $pkgdir/usr/bin/$pkgname-fix-permissions
 }
 
 package_linux-pax-headers() {
