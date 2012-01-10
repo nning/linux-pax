@@ -10,11 +10,10 @@ _kernelname=${pkgname#linux}
 _basekernel=3.2
 _paxver=test3
 pkgver=${_basekernel}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
-depends=(paxctl)
 options=(!strip)
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
@@ -36,7 +35,7 @@ md5sums=(
 	f26cdeeb12f10b251d20a777203b0afc
 	c792439f6f6c0dcedd1c71af63673d30
 	5d29c2995ffa1ac918dd6b269ec09ecc
-	ceecd44b73841919b0918c72dc242c3b
+	b477a139f8fc66f4d72952f37d3565bf
 )
 
 build() {
@@ -102,7 +101,7 @@ build() {
 package_linux-pax() {
   pkgdesc="The Linux Kernel and modules with PaX patches"
   groups=('base')
-  depends=('coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
+  depends=('paxctl' 'coreutils' 'linux-firmware' 'module-init-tools>=3.16' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26-pax')
   conflicts=('kernel26-pax')
