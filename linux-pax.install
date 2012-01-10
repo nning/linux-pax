@@ -5,48 +5,10 @@ KERNEL_NAME=-pax
 KERNEL_VERSION=3.2-pax
 
 _fix_permissions () {
-	declare -A perms
+	/usr/bin/linux-pax-fix-permissions
 
-	perms=(
-		# MPROTECT and RANDMMAP off
-		['PSmXEr']='
-			/usr/lib/chromium/chromium
-			/usr/lib/firefox/firefox-bin
-			/usr/lib/firefox/plugin-container
-			/usr/lib/thunderbird/thunderbird-bin
-		'
-		# MPROTECT off
-		['PSmXER']='
-			/usr/bin/glxgears
-			/usr/bin/glxinfo
-			/usr/bin/mplayer
-		'
-		# All off
-		['psmxer']='
-			/usr/bin/java
-		'
-	)
-
-	echo Some programs need permissions PaX prevents. Please close all
-	echo instances of them and press enter to continue writing PaX headers:
-
-	for perm in ${!perms[@]}; do
-		for path in ${perms[$perm]}; do
-			[ -f $path ] && echo "   $path"
-		done
-	done
-
-	read
-
-	for perm in ${!perms[@]}; do
-		for path in ${perms[$perm]}; do
-			[ -f $path ] && {
-				echo $perm $path
-				paxctl -c $path
-				paxctl -$perm $path
-			}
-		done
-	done
+	echo You can repeat this process after updating or installing affected
+	echo binaries by running "linux-pax-fix-permissions".
 }
 
 post_install () {
