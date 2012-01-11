@@ -75,7 +75,7 @@ build() {
   sed -ri 's|^(SUBLEVEL =).*|\1|' Makefile
 
   # get kernel version
-  #make prepare
+  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
