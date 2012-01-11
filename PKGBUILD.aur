@@ -9,7 +9,7 @@ _kernelname=${pkgname#linux}
 _basekernel=3.2
 _paxver=test3
 pkgver=${_basekernel}
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -24,6 +24,9 @@ conflicts=('kernel26-pax')
 replaces=('kernel26-pax')
 backup=("etc/mkinitcpio.d/${pkgname}.preset")
 install=$pkgname.install
+
+_menuconfig=0
+[ ! -z $MENUCONFIG ] && _menuconfig=1
 
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
@@ -85,21 +88,27 @@ build() {
   sed -ri 's|^(SUBLEVEL =).*|\1|' Makefile
 
   # get kernel version
-  make prepare
+  [ "$_menuconfig" = "0" ] && {
+    make prepare
+  }
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-# make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
+  [ "$_menuconfig" = "1" ] && {
+    make menuconfig # CLI menu for configuration
+    #make nconfig # new CLI menu for configuration
+    #make xconfig # X-based configuration
+    #make oldconfig # using old config from previous kernel version
+    # ... or manually edit .config
+  }
 
   ####################
   # stop here
   # this is useful to configure the kernel
-# msg "Stopping build"
-# return 1
+  [ "$_menuconfig" = "1" ] && {
+    msg "Stopping build"
+    return 1
+  }
   ####################
 
   yes "" | make config
