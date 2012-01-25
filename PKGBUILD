@@ -8,9 +8,9 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-_paxver=test3
-pkgver=${_basekernel}
-pkgrel=5
+_paxver=test5
+pkgver=${_basekernel}.1
+pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -24,24 +24,30 @@ source=(
 	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
 	change-default-console-loglevel.patch
 	i915-fix-ghost-tv-output.patch
+	i915-gpu-finish.patch
 	config
 	config.x86_64
 	$pkgname.install
 	$pkgname.preset
 )
 md5sums=(
-	7ceb61f87c097fc17509844b71268935
-	b9abf5eabb8f502d3b82910798e80bfa
+	090eb3dae0f520f7770f85193e931ad3
+	5af10730e2a535948b6a293db499ed71
 	9d3c56a4b999c8bfbd4018089a62f662
 	342071f852564e1ad03b79271a90b1a5
-	523dc8857f80520a833e30542708b5ae
-	f1397e95d7f6e9f4180b8b16bbc49d52
+	e787ef4bc66e2d9a7883eaece7a915b9
+	327e5eb7b07b474e0433cc0cca6f96a6
+	875b121a32a619e0ee262c541f330427
 	42a358c6b1b83c391bde6babcaec8555
 	5d29c2995ffa1ac918dd6b269ec09ecc
 )
 
 build() {
   cd $srcdir/linux-$pkgver
+
+  # fix FS#27883
+  # drm/i915: Only clear the GPU domains upon a successful finish
+  patch -Np1 -i "${srcdir}/i915-gpu-finish.patch"
 
   # Some chips detect a ghost TV output
   # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
@@ -191,6 +197,7 @@ package_linux-pax-headers() {
   # copy files necessary for later builds, like nvidia and vmware
   cp Module.symvers "${pkgdir}/usr/src/linux-${_kernver}"
   cp -a scripts "${pkgdir}/usr/src/linux-${_kernver}"
+  cp -a tools "${pkgdir}/usr/src/linux-${_kernver}"
 
   # fix permissions on scripts dir
   chmod og-w -R "${pkgdir}/usr/src/linux-${_kernver}/scripts"
