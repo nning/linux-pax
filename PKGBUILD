@@ -64,7 +64,7 @@ build() {
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Add PaX patches
-  patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
+  patch -Np1 -i $srcdir/pax-linux-$_paxver.patch
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
