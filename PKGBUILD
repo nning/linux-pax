@@ -8,8 +8,8 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-_paxver=${_basekernel}.4-test10
-pkgver=${_basekernel}.5
+_paxver=test11
+pkgver=${_basekernel}.6
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ _menuconfig=0
 
 source=(
 	ftp://ftp.kernel.org/pub/linux/kernel/v3.0/linux-$pkgver.tar.bz2
-	http://grsecurity.net/test/pax-linux-$_paxver.patch
+	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
 	change-default-console-loglevel.patch
 	i915-fix-ghost-tv-output.patch
 	i915-gpu-finish.patch
@@ -31,8 +31,8 @@ source=(
 	$pkgname.preset
 )
 md5sums=(
-	17c180eaa524101ca1c675bd675eca37
-	f110f5fd3b63ec4bb3a3233077c32c44
+	7f6177a2add41b553b693af838e6ac2d
+	36de3b5f44f3d92afb1df07793e76649
 	9d3c56a4b999c8bfbd4018089a62f662
 	342071f852564e1ad03b79271a90b1a5
 	e787ef4bc66e2d9a7883eaece7a915b9
