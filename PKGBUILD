@@ -8,8 +8,8 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.2
-_paxver=test18
-pkgver=${_basekernel}.9
+_paxver=test28
+pkgver=${_basekernel}.11
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ _menuconfig=0
 
 #	ftp://ftp.kernel.org/pub/linux/kernel/v3.x/linux-$pkgver.tar.xz
 source=(
-	ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-3.2.9.tar.xz
+	ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$pkgver.tar.xz
 	http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
 	change-default-console-loglevel.patch
 	i915-fix-ghost-tv-output.patch
@@ -32,8 +32,8 @@ source=(
 	$pkgname.preset
 )
 md5sums=(
-	a9b65ef81e036ad8aeaa6c60dbebad4c
-	615ab39e0db14b32aefa366d7eaf1155
+	0e3d5a3dab51b3c36940461582bc06df
+	36f3b83e8c5dc9caf5c51794e15b4a5f
 	9d3c56a4b999c8bfbd4018089a62f662
 	342071f852564e1ad03b79271a90b1a5
 	e787ef4bc66e2d9a7883eaece7a915b9
