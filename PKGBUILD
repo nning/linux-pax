@@ -1,8 +1,8 @@
 # Original kernel maintainers:
-# Tobias Powalowski <tpowa@archlinux.org>
-# Thomas Baechler <thomas@archlinux.org>
+#   Tobias Powalowski <tpowa@archlinux.org>
+#   Thomas Baechler <thomas@archlinux.org>
 # Contributors:
-# henning mueller <henning@orgizm.net>
+#   henning mueller <henning@orgizm.net>
 
 pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
