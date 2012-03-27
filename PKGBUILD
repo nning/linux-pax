@@ -33,12 +33,12 @@ source=(
 )
 md5sums=(
   7133f5a2086a7d7ef97abac610c094f5
-  13c78edf2d432c74020b6b31fcdde3d0
+  a91fa37b01e38d1b00002070d78889bf
   9d3c56a4b999c8bfbd4018089a62f662
   342071f852564e1ad03b79271a90b1a5
   e787ef4bc66e2d9a7883eaece7a915b9
-  514805698fc110614449603f4cb552a8
-  afde0d578f28ad3e464d0c232f85a57c
+  0ccfa1f7ff8c63055bebf327ef6e2f91
+  bc5bdc869a16235eb5767bb23cf292a9
   42a358c6b1b83c391bde6babcaec8555
   5d29c2995ffa1ac918dd6b269ec09ecc
 )
@@ -292,21 +292,3 @@ package_linux-pax-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'a91fa37b01e38d1b00002070d78889bf'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '342071f852564e1ad03b79271a90b1a5'
-         'e787ef4bc66e2d9a7883eaece7a915b9'
-         '514805698fc110614449603f4cb552a8'
-         '33f6f5e143d71691bb9947eb6335cb1d'
-         '42a358c6b1b83c391bde6babcaec8555'
-         '5d29c2995ffa1ac918dd6b269ec09ecc')
-md5sums=('7133f5a2086a7d7ef97abac610c094f5'
-         'a91fa37b01e38d1b00002070d78889bf'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '342071f852564e1ad03b79271a90b1a5'
-         'e787ef4bc66e2d9a7883eaece7a915b9'
-         '514805698fc110614449603f4cb552a8'
-         '9673147f16a45dd78f712216a8b24791'
-         '42a358c6b1b83c391bde6babcaec8555'
-         '5d29c2995ffa1ac918dd6b269ec09ecc')
