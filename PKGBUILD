@@ -8,9 +8,9 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-_paxver=test2
+_paxver=test4
 pkgver=${_basekernel}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -292,3 +292,21 @@ package_linux-pax-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,cris,frv,h8300,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,parisc,powerpc,ppc,s390,sh,sh64,sparc,sparc64,um,v850,xtensa}
 }
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         'a91fa37b01e38d1b00002070d78889bf'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '342071f852564e1ad03b79271a90b1a5'
+         'e787ef4bc66e2d9a7883eaece7a915b9'
+         '514805698fc110614449603f4cb552a8'
+         '33f6f5e143d71691bb9947eb6335cb1d'
+         '42a358c6b1b83c391bde6babcaec8555'
+         '5d29c2995ffa1ac918dd6b269ec09ecc')
+md5sums=('7133f5a2086a7d7ef97abac610c094f5'
+         'a91fa37b01e38d1b00002070d78889bf'
+         '9d3c56a4b999c8bfbd4018089a62f662'
+         '342071f852564e1ad03b79271a90b1a5'
+         'e787ef4bc66e2d9a7883eaece7a915b9'
+         '514805698fc110614449603f4cb552a8'
+         '9673147f16a45dd78f712216a8b24791'
+         '42a358c6b1b83c391bde6babcaec8555'
+         '5d29c2995ffa1ac918dd6b269ec09ecc')
