@@ -23,9 +23,10 @@ _menuconfig=0
 source=(
   ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$pkgver.tar.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
-  change-default-console-loglevel.patch
   i915-fix-ghost-tv-output.patch
-  i915-gpu-finish.patch
+  fix-acerhdf-1810T-bios.patch
+  change-default-console-loglevel.patch
+  ext4-options.patch
   config.i686
   config.x86_64
   $pkgname.install
@@ -34,9 +35,10 @@ source=(
 md5sums=(
   eb31735968d1ac9a431322089f7bc3a3
   c231acb938ffc16ac184c39daffd8d3d
-  9d3c56a4b999c8bfbd4018089a62f662
   342071f852564e1ad03b79271a90b1a5
-  e787ef4bc66e2d9a7883eaece7a915b9
+  3cb9e819538197398aad5db5529b22d6
+  9d3c56a4b999c8bfbd4018089a62f662
+  774c6ff0113463ca573de091bba1ef92
   0ccfa1f7ff8c63055bebf327ef6e2f91
   bc5bdc869a16235eb5767bb23cf292a9
   42a358c6b1b83c391bde6babcaec8555
@@ -45,10 +47,6 @@ md5sums=(
 
 build() {
   cd $srcdir/linux-$pkgver
-
-  # fix FS#27883
-  # drm/i915: Only clear the GPU domains upon a successful finish
-  patch -Np1 -i "${srcdir}/i915-gpu-finish.patch"
 
   # Some chips detect a ghost TV output
   # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
@@ -59,10 +57,19 @@ build() {
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
 
+  # Patch submitted upstream, waiting for inclusion:
+  # https://lkml.org/lkml/2012/2/19/51
+  # add support for latest bios of Acer 1810T acerhdf module
+  patch -Np1 -i "${srcdir}/fix-acerhdf-1810T-bios.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix ext4 module to mount ext3/2 correct
+  # https://bugs.archlinux.org/task/28653
+  patch -Np1 -i "${srcdir}/ext4-options.patch"
 
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
