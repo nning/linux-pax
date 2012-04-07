@@ -10,7 +10,7 @@ _kernelname=${pkgname#linux}
 _basekernel=3.3
 _paxver=test5
 pkgver=${_basekernel}.1
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -40,7 +40,7 @@ md5sums=(
   9d3c56a4b999c8bfbd4018089a62f662
   774c6ff0113463ca573de091bba1ef92
   0ccfa1f7ff8c63055bebf327ef6e2f91
-  2c4ffc197b8db625fc94f629a0287104
+  4c2878fe8bf80df3a91104978c5608a6
   42a358c6b1b83c391bde6babcaec8555
   5d29c2995ffa1ac918dd6b269ec09ecc
 )
