@@ -8,8 +8,8 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-_paxver=test7
-pkgver=${_basekernel}.2
+_paxver=test8
+pkgver=${_basekernel}.3
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -33,8 +33,8 @@ source=(
   $pkgname.preset
 )
 md5sums=(
-  aa9b07bbd30ed38607a30795e7628ccf
-  c8382d7985d43caad20fe9d12c8072c1
+  06ecac7a5061aab8a49a7d5447736694
+  4e3d5fa0794ae7c8bb2304d23796bd08
   342071f852564e1ad03b79271a90b1a5
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
@@ -56,6 +56,16 @@ build() {
   # then dropped because the reasoning was unclear. However, it is clearly
   # needed.
   patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
+
+  # Patch submitted upstream, waiting for inclusion:
+  # fix https://bugzilla.kernel.org/show_bug.cgi?id=43098
+  # Arch Linux bug report #29351
+  patch -Np1 -i  "${srcdir}/fix-memblock-3.3.x.patch"
+
+  # Patch submitted upstream, waiting for inclusion:
+  # Arch Linux bug report #29339
+  # probably 3.3.4 will include it
+  patch -Np1 -i "${srcdir}/fix-r8712u-3.3.2.patch"
 
   # Patch submitted upstream, waiting for inclusion:
   # https://lkml.org/lkml/2012/2/19/51
