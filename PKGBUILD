@@ -24,6 +24,8 @@ source=(
   ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$pkgver.tar.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
   i915-fix-ghost-tv-output.patch
+  fix-memblock-3.3.x.patch
+  fix-r8712u-3.3.2.patch
   fix-acerhdf-1810T-bios.patch
   change-default-console-loglevel.patch
   ext4-options.patch
@@ -36,6 +38,8 @@ md5sums=(
   06ecac7a5061aab8a49a7d5447736694
   4e3d5fa0794ae7c8bb2304d23796bd08
   342071f852564e1ad03b79271a90b1a5
+  afc263a8c42f928a9110b656ea30c6d5
+  83dbc4335aac307370905745ef94a64c
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
   774c6ff0113463ca573de091bba1ef92
