@@ -8,8 +8,8 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-_paxver=test8
-pkgver=${_basekernel}.3
+_paxver=test9
+pkgver=${_basekernel}.4
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -35,8 +35,8 @@ source=(
   $pkgname.preset
 )
 md5sums=(
-  06ecac7a5061aab8a49a7d5447736694
-  4e3d5fa0794ae7c8bb2304d23796bd08
+  1cf9bbadf579734c57ed2e2081895692
+  2b5c658b1c5a339fe10494c210c2bd83
   342071f852564e1ad03b79271a90b1a5
   afc263a8c42f928a9110b656ea30c6d5
   83dbc4335aac307370905745ef94a64c
