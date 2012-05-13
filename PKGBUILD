@@ -8,9 +8,9 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.3
-_paxver=test11
-pkgver=${_basekernel}.5
-pkgrel=2
+_paxver=test12
+pkgver=${_basekernel}.6
+pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -33,8 +33,8 @@ source=(
   $pkgname.preset
 )
 md5sums=(
-  065000a7302f9663830a245ac8f17f1e
-  4da1545aa534cce83eb39da7ee86de37
+  cc8abb76be5af471b4a5d68c7e348850
+  ab152b5fe6ca42da96852721f8d6b891
   342071f852564e1ad03b79271a90b1a5
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
