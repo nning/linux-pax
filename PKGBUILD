@@ -7,9 +7,9 @@
 pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
-_basekernel=3.3
-_paxver=test15
-pkgver=${_basekernel}.7
+_basekernel=3.4
+_paxver=test5
+pkgver=${_basekernel}
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -32,8 +32,8 @@ source=(
   $pkgname.preset
 )
 md5sums=(
-  3bbaae2ab70156298c9230dcb24650d9
-  64e00425d75bab4ceea4504d35daad60
+  967f72983655e2479f951195953e8480
+  925325468661c580cdb2bc337255ae40
   342071f852564e1ad03b79271a90b1a5
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
