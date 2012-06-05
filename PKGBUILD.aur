@@ -63,10 +63,6 @@ build() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # fix ext4 module to mount ext3/2 correct
-  # https://bugs.archlinux.org/task/28653
-  patch -Np1 -i "${srcdir}/ext4-options.patch"
-
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
 
