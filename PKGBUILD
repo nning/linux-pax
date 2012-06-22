@@ -8,7 +8,7 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.4
-_paxver=test16
+_paxver=test17
 pkgver=${_basekernel}.3
 pkgrel=1
 arch=(i686 x86_64)
@@ -32,7 +32,7 @@ source=(
 )
 md5sums=(
   d13125cf34b340e20dd4e54ca88c3b35
-  2493de702dcd3487ab8261ba6ef8b318
+  7587da912cf14875aaa7d18d23b55af7
   342071f852564e1ad03b79271a90b1a5
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
