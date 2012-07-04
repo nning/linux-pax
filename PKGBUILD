@@ -8,8 +8,8 @@ pkgbase=linux-pax
 pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.4
-_paxver=test17
-pkgver=${_basekernel}.3
+_paxver=test18
+pkgver=${_basekernel}.4
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -25,17 +25,19 @@ source=(
   i915-fix-ghost-tv-output.patch
   fix-acerhdf-1810T-bios.patch
   change-default-console-loglevel.patch
+  3.4.4-fix-backlight-regression.patch
   config.i686
   config.x86_64
   $pkgname.install
   $pkgname.preset
 )
 md5sums=(
-  d13125cf34b340e20dd4e54ca88c3b35
-  7587da912cf14875aaa7d18d23b55af7
+  3d77adc7f8ab8e8e05729f126d883dce
+  ded2b07370da41271eb0b6cb0a4ca852
   342071f852564e1ad03b79271a90b1a5
   3cb9e819538197398aad5db5529b22d6
   9d3c56a4b999c8bfbd4018089a62f662
+  d2626a48d10d2be931753805849e86bf
   7cf6c22d2ac10e9c59f6e937b8c2dae2
   48acd08edab40e395d348196650c893d
   716bd5ca1f4f3e9cbe3990f78be4a5c4
@@ -63,6 +65,10 @@ build() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # Fix backlight control on some laptops:
+  # https://bugzilla.kernel.org/show_bug.cgi?id=43168
+  patch -Np1 -i "${srcdir}/3.4.4-fix-backlight-regression.patch"
 
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
