@@ -6,9 +6,9 @@
 
 pkgname=linux-pax
 _kernelname=${pkgname#linux}
-_basekernel=3.4
-_paxver=test18
-pkgver=${_basekernel}.4
+_basekernel=3.5
+_paxver=test2
+pkgver=${_basekernel}
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -21,22 +21,16 @@ _menuconfig=0
 source=(
   ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$pkgver.tar.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
-  i915-fix-ghost-tv-output.patch
-  fix-acerhdf-1810T-bios.patch
   change-default-console-loglevel.patch
-  3.4.4-fix-backlight-regression.patch
   config.i686
   config.x86_64
   $pkgname.install
   $pkgname.preset
 )
 md5sums=(
-  3d77adc7f8ab8e8e05729f126d883dce
-  ded2b07370da41271eb0b6cb0a4ca852
-  342071f852564e1ad03b79271a90b1a5
-  3cb9e819538197398aad5db5529b22d6
+  24153eaaa81dedc9481ada8cd9c3b83d
+  726cd1433b5feaa70f1ea5aa2086e019
   9d3c56a4b999c8bfbd4018089a62f662
-  d2626a48d10d2be931753805849e86bf
   7cf6c22d2ac10e9c59f6e937b8c2dae2
   48acd08edab40e395d348196650c893d
   716bd5ca1f4f3e9cbe3990f78be4a5c4
@@ -46,28 +40,10 @@ md5sums=(
 build() {
   cd $srcdir/linux-$pkgver
 
-  # Some chips detect a ghost TV output
-  # mailing list discussion: http://lists.freedesktop.org/archives/intel-gfx/2011-April/010371.html
-  # Arch Linux bug report: FS#19234
-  #
-  # It is unclear why this patch wasn't merged upstream, it was accepted,
-  # then dropped because the reasoning was unclear. However, it is clearly
-  # needed.
-  patch -Np1 -i "${srcdir}/i915-fix-ghost-tv-output.patch"
-
-  # Patch submitted upstream, waiting for inclusion:
-  # https://lkml.org/lkml/2012/2/19/51
-  # add support for latest bios of Acer 1810T acerhdf module
-  patch -Np1 -i "${srcdir}/fix-acerhdf-1810T-bios.patch"
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Fix backlight control on some laptops:
-  # https://bugzilla.kernel.org/show_bug.cgi?id=43168
-  patch -Np1 -i "${srcdir}/3.4.4-fix-backlight-regression.patch"
 
   # Add PaX patches
   patch -Np1 -i $srcdir/pax-linux-$pkgver-$_paxver.patch
