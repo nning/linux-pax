@@ -4,13 +4,13 @@
 # Contributors:
 #   henning mueller <henning@orgizm.net>
 
-pkgbase=linux-pax
-pkgname=(linux-pax linux-pax-headers)
+pkgname=linux-pax
+true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.5
-_paxver=test11
+_paxver=test12
 pkgver=${_basekernel}
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -28,14 +28,14 @@ source=(
   $pkgname.install
   $pkgname.preset
 )
-md5sums=(
-  24153eaaa81dedc9481ada8cd9c3b83d
-  6f7b9039efd8a6fd390903fc2c9c38ed
-  9d3c56a4b999c8bfbd4018089a62f662
-  e6d3cb7ba4791828274e460b17acf9d3
-  f5283d4c7be04720bec8c13007a5474d
-  716bd5ca1f4f3e9cbe3990f78be4a5c4
-  5d29c2995ffa1ac918dd6b269ec09ecc
+sha256sums=(
+  b985ce383f0cfd940d988d4c99a84899028327aca8c29b420678241f26fdb342
+  bc4be931e407442ea8ee0953fc4f1dce8fa9c3962e6c4606326419cdec7bd331
+  b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
+  08f008a299b0c8ca9f64fc841fee3b9749396765c41b7e25cf01266aaba91b83
+  378f777db2cbf4422b4b229e6804371bc37191a6a5fc63ed556bbdf8b1818a62
+  8abb733784a2891833cf097a272e39dce2cd4efe7bb655516196f6c54320563d
+  92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
 )
 
 build() {
