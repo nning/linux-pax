@@ -48,7 +48,7 @@ sha256sums=(
 )
 
 build() {
-  cd $srcdir/linux-$pkgver
+  cd "$srcdir/linux-$_basekernel"
 
   # add upstream patch
   patch -p1 -i "$srcdir/patch-$pkgver"
@@ -126,7 +126,7 @@ package_linux-pax() {
   backup=("etc/mkinitcpio.d/${pkgname}.preset")
   install=${pkgname}.install
 
-  cd $srcdir/linux-$pkgver
+  cd "$srcdir/linux-$_basekernel"
 
   KARCH=x86
 
