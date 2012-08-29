@@ -184,7 +184,7 @@ package_linux-pax-headers() {
   cd "${pkgdir}/usr/lib/modules/${_kernver}"
   ln -sf ../../../src/linux-${_kernver} build
 
-  cd $srcdir/linux-$pkgver
+  cd "$srcdir/linux-$_basekernel"
   install -D -m644 Makefile \
     "${pkgdir}/usr/src/linux-${_kernver}/Makefile"
   install -D -m644 kernel/Makefile \
