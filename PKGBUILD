@@ -7,10 +7,10 @@
 pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
-_basekernel=3.5
-_paxver=test29
-pkgver=${_basekernel}.4
-pkgrel=4
+_basekernel=3.6
+_paxver=test2
+pkgver=${_basekernel}
+pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -32,16 +32,6 @@ source=(
   i915-i2c-crash-3.5.x.patch
 )
 sha256sums=(
-  b985ce383f0cfd940d988d4c99a84899028327aca8c29b420678241f26fdb342
-  ca3f1272aaca709b94bbd1736426247240265f41394ce2e239fbed433cdd070d
-  5a056f321b9ff353f57aa162f95414b48a44abf926fe0711f6d3a522a6b34e12
-  08f008a299b0c8ca9f64fc841fee3b9749396765c41b7e25cf01266aaba91b83
-  378f777db2cbf4422b4b229e6804371bc37191a6a5fc63ed556bbdf8b1818a62
-  8abb733784a2891833cf097a272e39dce2cd4efe7bb655516196f6c54320563d
-  92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
-  b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
-  3b285aa62940908ef9dd2a72f81c28fd2c8102367188ef349509ff0f7d7f4fa8
-  bc9be7e4e5bc81aa30754a96f6a94c2e6eb6a147165a2ac50972c1fd59ef9964
 )
 
 build() {
@@ -57,11 +47,11 @@ build() {
 
   # fix broken watchdog
   # https://bugzilla.kernel.org/show_bug.cgi?id=44991
-  patch -Np1 -i "${srcdir}/watchdog-3.5.x.patch"
+# patch -Np1 -i "${srcdir}/watchdog-3.5.x.patch"
 
   # fix i915 i2c crash
   # https://bugzilla.kernel.org/show_bug.cgi?id=46381
-  patch -Np1 -i "${srcdir}/i915-i2c-crash-3.5.x.patch"
+# patch -Np1 -i "${srcdir}/i915-i2c-crash-3.5.x.patch"
 
   # Add PaX patches
   patch -Np1 -i "$srcdir/pax-linux-$pkgver-$_paxver.patch"
@@ -70,6 +60,7 @@ build() {
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
   # set extraversion to pkgrel
