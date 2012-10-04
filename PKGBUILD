@@ -298,13 +298,3 @@ package_linux-pax-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
-sha256sums=('4ab9a6ef1c1735713f9f659d67f92efa7c1dfbffb2a2ad544005b30f9791784f'
-            '603d8997f5e66df28d2b2df2ed9dec8bafb6ef7317d9f869d2a9e963a0173e01'
-            '22549ff9f7e613b1588879f591b838bce60fd3984ab1ef0c4f48b53cd8bda014'
-            '08f008a299b0c8ca9f64fc841fee3b9749396765c41b7e25cf01266aaba91b83'
-            '378f777db2cbf4422b4b229e6804371bc37191a6a5fc63ed556bbdf8b1818a62'
-            '8abb733784a2891833cf097a272e39dce2cd4efe7bb655516196f6c54320563d'
-            '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a'
-            'b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4'
-            '3b285aa62940908ef9dd2a72f81c28fd2c8102367188ef349509ff0f7d7f4fa8'
-            'bc9be7e4e5bc81aa30754a96f6a94c2e6eb6a147165a2ac50972c1fd59ef9964')
