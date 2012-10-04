@@ -143,13 +143,13 @@ package_linux-pax() {
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/linux.install"
+    -i "${startdir}/${pkgname}.install"
   sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -e "1s|'linux.*'|'${pkgname}'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
