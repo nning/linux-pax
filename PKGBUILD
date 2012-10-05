@@ -21,7 +21,7 @@ _menuconfig=0
 
 source=(
   ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
-  ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
+# ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
   config.i686
   config.x86_64
@@ -31,9 +31,8 @@ source=(
 )
 sha256sums=(
   4ab9a6ef1c1735713f9f659d67f92efa7c1dfbffb2a2ad544005b30f9791784f
-  603d8997f5e66df28d2b2df2ed9dec8bafb6ef7317d9f869d2a9e963a0173e01
   22549ff9f7e613b1588879f591b838bce60fd3984ab1ef0c4f48b53cd8bda014
-  01808aa23a17193495c97e955ce6c60356b28407ef5909967fa2f9257e6fac89
+  a84bf86c7f3b0723ecb444da3256b04532be968c1c7770ff61d60f0f6a321fdc
   dd1f956f0ab60de4b9df075a105f4a0a18c69745c10e1d2b54ac5a28b3b5d2bb
   50b3b2461da292a4ed4f4b766b933ef04ab9ac047431e5bd104d14010532c0c6
   92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
