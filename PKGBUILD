@@ -21,7 +21,7 @@ _menuconfig=0
 
 source=(
   ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
-# ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
+  ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
   config.i686
   config.x86_64
@@ -33,10 +33,11 @@ source=(
 )
 sha256sums=(
   4ab9a6ef1c1735713f9f659d67f92efa7c1dfbffb2a2ad544005b30f9791784f
+  603d8997f5e66df28d2b2df2ed9dec8bafb6ef7317d9f869d2a9e963a0173e01
   22549ff9f7e613b1588879f591b838bce60fd3984ab1ef0c4f48b53cd8bda014
   427be3add9448775bdc95cab94d0f3dcbb76f98bd7b9ac6538b621e9244239a0
   e6c7696d4d73a80de2a94e18bbeb29e692b68106193ecce6f5102680a12c481a
-  25fa169da57580df5dcf2d841e2df76d887a11d3d8d4c571fcc919406094e677
+  50b3b2461da292a4ed4f4b766b933ef04ab9ac047431e5bd104d14010532c0c6
   92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
   b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
   3b285aa62940908ef9dd2a72f81c28fd2c8102367188ef349509ff0f7d7f4fa8
@@ -47,7 +48,9 @@ build() {
   cd "$srcdir/linux-$_basekernel"
 
   # add upstream patch
-# patch -p1 -i "$srcdir/patch-$pkgver"
+  [ "$pkgver" != "$_basekernel" ] && {
+    patch -p1 -i "$srcdir/patch-$pkgver"
+  }
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -106,7 +109,7 @@ build() {
   yes "" | make config >/dev/null
 
   # build!
-  make ${MAKEFLAGS} bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 package_linux-pax() {
@@ -125,10 +128,10 @@ package_linux-pax() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make LOCALVERSION= kernelrelease)"
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make INSTALL_MOD_PATH="${pkgdir}" modules_install
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
 
   # add vmlinux and gcc plugins
