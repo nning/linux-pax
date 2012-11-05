@@ -8,9 +8,9 @@ pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.6
-_paxver=test5
-pkgver=${_basekernel}.5
-pkgrel=2
+_paxver=test6
+pkgver=${_basekernel}.6
+pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -20,8 +20,8 @@ _menuconfig=0
 [ ! -z $MENUCONFIG ] && _menuconfig=1
 
 source=(
-  ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
-  ftp://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
+  http://www.kernel.org/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
+  http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
   config.i686
   config.x86_64
@@ -31,8 +31,8 @@ source=(
 )
 sha256sums=(
   4ab9a6ef1c1735713f9f659d67f92efa7c1dfbffb2a2ad544005b30f9791784f
-  4343503007add206f4b6fb12219169b745893da48eefc451fff8cfd16d51121a
-  4f7eaf18ba2274b6c7ab9a77bc38bc8d8fdcc232dbd3f3176a1cefdd467dcbd6
+  221a0644f48c4d3d5c3eef63f470c73a2fd1c535280813991a47a4b713f6eae9
+  d0706520d30fac6a0c984bea4ccb8bc07ec7cec6686d087627c9153e6a137498
   a84bf86c7f3b0723ecb444da3256b04532be968c1c7770ff61d60f0f6a321fdc
   dd1f956f0ab60de4b9df075a105f4a0a18c69745c10e1d2b54ac5a28b3b5d2bb
   50b3b2461da292a4ed4f4b766b933ef04ab9ac047431e5bd104d14010532c0c6
