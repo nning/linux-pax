@@ -183,7 +183,7 @@ package_linux-pax-headers() {
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 
   for i in acpi asm-generic config crypto drm generated linux math-emu \
-    media net pcmcia scsi sound trace video xen; do
+    media net pcmcia scsi sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/src/linux-${_kernver}/include/"
   done
 
@@ -210,11 +210,22 @@ package_linux-pax-headers() {
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/src/linux-${_kernver}/arch/${KARCH}/kernel/"
 
   # add headers for lirc package
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video"
-
-  for i in bt8xx cpia2 cx25840 cx88 em28xx pwc saa7134 sn9c102; do
-    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
-    cp -a drivers/media/video/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/video/${i}"
+  # pci
+  for i in bt8xx cx88 saa7134; do
+    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/pci/${i}"
+    cp -a drivers/media/pci/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/pci/${i}"
+  done
+  # usb
+  for i in cpia2 em28xx pwc sn9c102; do
+    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/usb/${i}"
+    cp -a drivers/media/usb/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/usb/${i}"
+  done
+  # i2c
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c"
+  cp drivers/media/i2c/*.h  "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
+  for i in cx25840; do
+    mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
+    cp -a drivers/media/i2c/${i}/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/${i}"
   done
 
   # add docbook makefile
@@ -236,8 +247,8 @@ package_linux-pax-headers() {
   # add dvb headers for external modules
   # in reference to:
   # http://bugs.archlinux.org/task/9912
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/dvb-core"
-  cp drivers/media/dvb/dvb-core/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/dvb-core/"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core"
+  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-core/"
   # and...
   # http://bugs.archlinux.org/task/11194
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include/config/dvb/"
@@ -246,19 +257,19 @@ package_linux-pax-headers() {
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:
   # http://bugs.archlinux.org/task/13146
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/frontends/"
-  cp drivers/media/dvb/frontends/lgdt330x.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/frontends/"
-  cp drivers/media/video/msp3400-driver.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/frontends/"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/i2c/"
 
   # add dvb headers
   # in reference to:
   # http://bugs.archlinux.org/task/20402
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/dvb-usb"
-  cp drivers/media/dvb/dvb-usb/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/dvb-usb/"
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/frontends"
-  cp drivers/media/dvb/frontends/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb/frontends/"
-  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/common/tuners"
-  cp drivers/media/common/tuners/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/common/tuners/"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/usb/dvb-usb"
+  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/usb/dvb-usb/"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends"
+  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/dvb-frontends/"
+  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/tuners"
+  cp drivers/media/tuners/*.h "${pkgdir}/usr/src/linux-${_kernver}/drivers/media/tuners/"
 
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/fs/xfs"
