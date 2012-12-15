@@ -7,9 +7,9 @@
 pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
-_basekernel=3.6
-_paxver=test15
-pkgver=${_basekernel}.10
+_basekernel=3.7
+_paxver=test1
+pkgver=${_basekernel}
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
@@ -28,20 +28,16 @@ source=(
   $pkgname.install
   $pkgname.preset
   change-default-console-loglevel.patch
-  module-init-wait-$_basekernel.patch
-  module-symbol-waiting-$_basekernel.patch
 )
 sha256sums=(
-  4ab9a6ef1c1735713f9f659d67f92efa7c1dfbffb2a2ad544005b30f9791784f
-  99ad56f28f718d3718b8a53cd6bbb0edfdca434f96c5590db073d0edc34c0067
-  c640f9585f282a9b687780ee4f145b0bc91e5b04c31d547d9922c4510bb6c552
+  60a64d0bf76eeec3355f115c577935757b84629c8c129ce5b8bb02075f6b9458
+  02ee29fc0f53ab3a402cbb3512cfd7c9c7c8e405ffce3e208b2fcfa788dfffe7
+  4646858c1015cee631777182edd066d251b8dd99735287643b53ad434015e693
   a84bf86c7f3b0723ecb444da3256b04532be968c1c7770ff61d60f0f6a321fdc
   dd1f956f0ab60de4b9df075a105f4a0a18c69745c10e1d2b54ac5a28b3b5d2bb
   50b3b2461da292a4ed4f4b766b933ef04ab9ac047431e5bd104d14010532c0c6
   92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
   b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
-  a99a7542b76ada662a7dee327a07b6ebc91b1d68d50ebb4771afc471134c3d24
-  bd5ddb0fb9a0380c4d716e0550df6f225c921cca4ef3b2fff9a4baac22616294
 )
 
 build() {
