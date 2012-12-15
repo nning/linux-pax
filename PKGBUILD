@@ -53,11 +53,6 @@ build() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "$srcdir/change-default-console-loglevel.patch"
 
-  # fix module initialisation
-  # https://bugs.archlinux.org/task/32122
-  patch -Np1 -i "${srcdir}/module-symbol-waiting-3.6.patch"
-  patch -Np1 -i "${srcdir}/module-init-wait-3.6.patch"
-
   # Add PaX patches
   patch -Np1 -i "$srcdir/pax-linux-$pkgver-$_paxver.patch"
 
