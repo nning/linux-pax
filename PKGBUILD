@@ -10,8 +10,8 @@ _kernelname=${pkgname#linux}
 _basekernel=3.8
 _paxver=test1
 pkgver=${_basekernel}
-pkgrel=1
-arch=(i686 x86_64)
+pkgrel=2
+arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 options=(!strip)
@@ -23,7 +23,6 @@ source=(
   http://www.kernel.org/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
   http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.xz
   http://grsecurity.net/test/pax-linux-$pkgver-$_paxver.patch
-  config.i686
   config.x86_64
   $pkgname.install
   $pkgname.preset
@@ -33,8 +32,7 @@ sha256sums=(
   e070d1bdfbded5676a4f374721c63565f1c969466c5a3e214004a136b583184b
   60577a076fc68eebecdd4bdb9a796e744363de7c91e3fb7dc2511d83d3bf58f1
   c3129469f21a8154b54d4380c3893b99354bb60ff9af60f93ad85621d9ad7937
-  34418d1ca5544d4d33640f4d8957272d92143976035ed2c6fd047c9323e849b1
-  27470c16a0c6658c504c3b4f9c5f268b3c64719a2b9b462f5b077b51d1fb2b70
+  f58f4ce2dc33fb83328ec83591ffa4c1cca703da5f83ff78fb5e223fda1f3821
   222a124863aff80a6f299303e45d4a724383414d0f3258f83f09fb713a7ff51b
   92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
   b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
