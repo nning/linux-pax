@@ -38,6 +38,11 @@ sha256sums=(
   b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4
 )
 
+[ $LANG = 'de_DE.UTF-8' ] && {
+  source[0]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
+  source[1]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
+}
+
 build() {
   cd "$srcdir/linux-$_basekernel"
 
