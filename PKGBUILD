@@ -9,8 +9,8 @@ true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.8
 _paxver=test4
-pkgver=${_basekernel}
-pkgrel=4
+pkgver=${_basekernel}.2
+pkgrel=1
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -30,8 +30,8 @@ source=(
 )
 sha256sums=(
   e070d1bdfbded5676a4f374721c63565f1c969466c5a3e214004a136b583184b
-  60577a076fc68eebecdd4bdb9a796e744363de7c91e3fb7dc2511d83d3bf58f1
-  745d16c86cb202491355f525abe08d4c2c4fcc117e04e5dc7493724dc195db1f
+  2bd1a39db4608a03250bfef11d3b7894ab1f0ebcb5316bafeeed23535822fd9c
+  24fcb811b8752b48f9de4326d8fdc99f26484f8e1c08d3456043fac571754475
   75b5e500aebef8e4806f2fc726cf9d71c322fafaa69c958554e4d4bb7a345147
   222a124863aff80a6f299303e45d4a724383414d0f3258f83f09fb713a7ff51b
   92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
