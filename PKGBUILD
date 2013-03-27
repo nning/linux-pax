@@ -8,9 +8,9 @@ pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.8
-_paxver=test12
+_paxver=test13
 pkgver=${_basekernel}.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -295,10 +295,3 @@ package_linux-pax-headers() {
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-sha256sums=('e070d1bdfbded5676a4f374721c63565f1c969466c5a3e214004a136b583184b'
-            '6609b846a01fc4e03ec1f12c6e965297d42e18b3fd13a1dfb0b2f68d18e7e204'
-            '48533d3c78c36504556be105d0c86ddc41bf10649951e6bcc7e5e265ffa72fc3'
-            'a6b84942f4a4b111d1073676f35e9ec76f30948b11a27a09d75a6f1ff9a783a9'
-            '1d7c394f2114cf5e3af3a6a7b963772e0ec5397d7c84adcd5aa96299a77b5e2e'
-            '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a'
-            'b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4')
