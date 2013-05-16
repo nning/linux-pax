@@ -15,6 +15,7 @@ arch=(x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
 options=(!strip)
+makedepends=(bc)
 
 _menuconfig=0
 [ ! -z $MENUCONFIG ] && _menuconfig=$MENUCONFIG
