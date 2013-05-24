@@ -296,10 +296,10 @@ package_linux-pax-headers() {
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arm,arm26,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-md5sums=('4348c9b6b2eb3144d601e87c19d5d909'
-         '71b31e29e0cb437a27017c781293b6f4'
-         'cde9748e38341187e37fd66d04b6cb17'
-         'b0675de6285167e24f93d47182cdcffd'
-         'f824ebd822b6ec40b720f7adaf1e87a1'
-         '5d29c2995ffa1ac918dd6b269ec09ecc'
-         '9d3c56a4b999c8bfbd4018089a62f662')
+sha256sums=('60bc3e64ee5dc778de2cd7cd7640abf518a4c9d4f31b8ed624e16fad53f54541'
+            '248ab5f9a42b72e5c3d961520a5fff609a625bbf570ad45d7ae97009525b94d7'
+            '3ca5f2eab1481ad9d6ab749042f65b8c1b734151844e1c76d33c3ab03a779a5e'
+            '3ec387f8afd49e4a797646bc17c0d538c3503b4cc4dcf1fece43b0f46d7f4ee4'
+            'cd2de4186257da3d0302f8fc23124d179c63cd2c1ce7de2a0ce8a6712ea853c6'
+            '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a'
+            'b9d79ca33b0b51ff4f6976b7cd6dbb0b624ebf4fbf440222217f8ffc50445de4')
