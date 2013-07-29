@@ -8,9 +8,9 @@ pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
 _kernelname=${pkgname#linux}
 _basekernel=3.10
-_paxver=test4
+_paxver=test5
 pkgver=${_basekernel}.3
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.kernel.org/"
 license=(GPL2)
@@ -33,7 +33,7 @@ source=(
 
 [ $LANG = 'de_DE.UTF-8' ] && {
   source[0]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
-  #source[1]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
+  source[1]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
 }
 
 build() {
@@ -299,7 +299,7 @@ package_linux-pax-headers() {
 
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             '28f1bc33ec70e963a604330e1c28d356a830c1e5349bbdb5d8b9c257a6fff81c'
-            '25916999301b4c38526528f45c5a6fc0b92616ff9693760565061ce4d4dc87e7'
+            '4a6812260411049810ff775e12b772101ae7b58be0425a7d80e2096977bae4ca'
             'c28d3386fd25dc659c3ae806f9104d414abe09d46705c9072e63351fc58ef699'
             'c2b53fef17fe95edba93a8aae2a29abe1ee5550271a4f216ab85f57d21ae8afc'
             'd5cf490189c64ef6d0a590b865bd4523bbd317b26b7b0699d2b1ac14aed2684c'
