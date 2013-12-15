@@ -1,8 +1,16 @@
 # Original kernel maintainers:
 #   Tobias Powalowski <tpowa@archlinux.org>
 #   Thomas Baechler <thomas@archlinux.org>
+#
 # Contributors:
 #   henning mueller <henning@orgizm.net>
+#
+# Find this package in the AUR:
+#   https://aur.archlinux.org/packages/linux-pax
+#
+# Please report bugs and feature requests on GitHub:
+#   https://github.com/nning/linux-pax
+#
 
 pkgname=linux-pax
 true && pkgname=(linux-pax linux-pax-headers)
