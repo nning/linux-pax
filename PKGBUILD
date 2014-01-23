@@ -306,7 +306,7 @@ package_linux-pax-headers() {
 
 sha256sums=('4d5e5eee5f276424c32e9591f1b6c971baedc7b49f28ce03d1f48b1e5d6226a2'
             '1bdc91a0edcc56f62d1f53b39afc44bdaae7ee6d4febdedf48e5b1a41019d7a7'
-            '5b313fffd875e27fe2df6473a879da6880a43dca1cb463f23d6bb09e4d8b20bd'
+            'c56ab1e57e4f64d4f72615a27f25149df3bcd496901e533b6b8fb1d7765aae26'
             'a352a73f46378909b2971c964d9606ff89256e56b75d05971a2f04f0fb9d5083'
             '2d62c4be4a515cc6aca5a66c0e9fdc23cb7775531c6d102bc3c1be069dd6b0a8'
             '92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a')
