@@ -172,9 +172,10 @@ package_linux-pax-headers() {
   conflicts=("kernel26${_kernelname}-headers")
   replaces=("kernel26${_kernelname}-headers")
 
+  cd "$srcdir/linux-$_basekernel"
+
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
