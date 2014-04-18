@@ -28,9 +28,9 @@ makedepends=(bc)
 _menuconfig=0
 [ ! -z $MENUCONFIG ] && _menuconfig=$MENUCONFIG
 
-# http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.xz
 source=(
   http://www.kernel.org/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
+  http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.xz
   http://grsecurity.net/~paxguy1/pax-linux-$pkgver-$_paxver.patch
   config.i686
   config.x86_64
@@ -38,9 +38,9 @@ source=(
   $pkgname.preset
 )
 
-# source[1]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
 [ $LANG = 'de_DE.UTF-8' ] && {
   source[0]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
+  source[1]=http://ftp.halifax.rwth-aachen.de/pub/linux/kernel/v3.x/patch-$pkgver.xz
 }
 
 prepare() {
@@ -287,6 +287,7 @@ package_linux-pax-headers() {
 }
 
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
+            'ac56f0bff3c6ec436161f2702c7269b933e22bae0488ed709ab29e4aeb78be45'
             'cd7985797444213095f7b570ddb947581b915b06af157bcd5daeb5cc126aed4f'
             '3ca3f7de257baa70d8dc76b2efe1c0e4ddf6bd3910d15b254faefa4282c87eb2'
             '0433d69536c44db2acd382679b5e8ef2d0f19e6f03d3f66fff6fad6cf2c9c70e'
