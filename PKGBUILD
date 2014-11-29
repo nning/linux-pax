@@ -18,7 +18,7 @@ _kernelname=${pkgname#linux}
 _basekernel=3.17
 _paxver=test6
 pkgver=${_basekernel}.4
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url='https://github.com/nning/linux-pax'
 license=(GPL2)
@@ -30,7 +30,9 @@ _menuconfig=0
 
 source=(
   http://www.kernel.org/pub/linux/kernel/v3.x/linux-$_basekernel.tar.xz
+  http://www.kernel.org/pub/linux/kernel/v3.x/linux-$_basekernel.tar.sign
   http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.xz
+  http://www.kernel.org/pub/linux/kernel/v3.x/patch-$pkgver.sign
   http://grsecurity.net/~paxguy1/pax-linux-$pkgver-$_paxver.patch
   config.i686
   config.x86_64
@@ -282,7 +284,9 @@ package_linux-pax-headers() {
 }
 
 sha256sums=('f5153ec93c5fcd41b247950e6a9bcbc63fa87beafd112c133a622439a0f76251'
+            'SKIP'
             'eeef37397a15245bd143569908be40622a87dc7673965e623e811ea3f68b8434'
+            'SKIP'
             'd1c948948e6481e69613e417e628999605c5a27a0c82446c8574837946b1faea'
             '77bc8f9daf3772d00dcad857b93aa6d4d99d410e487918b27e38c4a257ddae0f'
             '9e1053c6ddbab0f7a2a2879b30d13ac35ab0e9d2c7f6356e630b724387d78658'
